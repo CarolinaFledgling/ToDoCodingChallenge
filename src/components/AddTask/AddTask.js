@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { TasksList } from "../TasksList/TasksList";
 import { Button } from "../UI/Button/Button";
 import { Card } from "../UI/Card/Card";
 import { Wrapper } from "../UI/Wrapper/Wrapper";
 import styled from "./AddTask.module.css";
 
-export const AddTask = () => {
+export const AddTask = ({ dispatch, taskList }) => {
   const [enteredTask, setEnteredTask] = useState("");
   const [error, setError] = useState("");
 
@@ -18,6 +19,8 @@ export const AddTask = () => {
       });
       return;
     }
+
+    dispatch({ type: "NEW_TASK", name: enteredTask });
 
     console.log(enteredTask);
     setEnteredTask("");
@@ -54,6 +57,7 @@ export const AddTask = () => {
           <Button type="submit">Add Task</Button>
         </form>
       </Card>
+      <TasksList dispatch={dispatch} taskList={taskList} />
     </Wrapper>
   );
 };

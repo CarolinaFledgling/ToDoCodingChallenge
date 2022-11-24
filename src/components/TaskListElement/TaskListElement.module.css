@@ -1,0 +1,38 @@
+.tasks {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 50rem;
+}
+
+.tasks ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.tasks li {
+  border-bottom: 1px solid #f25042;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+.wrapperElement {
+  width: 90%;
+  display: flex;
+
+  align-items: flex-end;
+}
+
+.wrapperElement p {
+  margin: 0;
+  width: 90%;
+}
+
+.textGroup {
+  display: flex;
+  align-items: flex-start;
+}
+
+.textGroup span {
+  padding: 0 0.3rem;
+  font-weight: 600;
+}

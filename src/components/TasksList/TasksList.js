@@ -12,8 +12,9 @@ export const TasksList = React.memo(({ taskList, dispatch }) => {
           ""
         ) : (
           <ul>
-            {taskList.map((task) => {
+            {taskList.slice().reverse().map((task) => {
               return (
+                
                 <TaskListElement
                   key={task.id}
                   task={task}

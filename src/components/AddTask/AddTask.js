@@ -54,7 +54,7 @@ export const AddTask = ({ dispatch, taskList }) => {
               {error.title} {error.message}
             </p>
           )}
-          <Button type="submit">Add Task</Button>
+          <Button type="submit">Add</Button>
         </form>
       </Card>
       <TasksList dispatch={dispatch} taskList={taskList} />

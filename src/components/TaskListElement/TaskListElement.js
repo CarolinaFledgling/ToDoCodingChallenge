@@ -20,7 +20,7 @@ export const TaskListElement = ({ task, dispatch }) => {
         >
           {task.name}
         </li>
-        {task.isCompleted ? <span className={styled.span}>Completed</span> : ""}
+        {task.isCompleted ? <span className={styled.span}>Done</span> : ""}
       </div>
 
       <div className={styled.btnGroup}>

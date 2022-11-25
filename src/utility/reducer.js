@@ -51,6 +51,19 @@ export function reducerFn(latestState, actionDispatched) {
 
     return { ...latestState, taskList: newListTasks };
   }
+
+  if (actionDispatched.type === "START_CHECKBOX_COMPLETE_TASK") {
+    const newListTasks = latestState.taskList.map((task) => {
+      if (task.id === actionDispatched.id) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
+    return { ...latestState, taskList: newListTasks };
+  }
   // throw new Error();
   return latestState;
 }

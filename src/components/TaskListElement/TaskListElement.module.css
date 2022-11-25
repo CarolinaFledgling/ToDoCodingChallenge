@@ -1,8 +1,13 @@
 .wrapperElement {
   display: flex;
-  justify-content: space-around;
+justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.element{
+  display: flex;
+  width: 50%;
 }
 
 .btnGroup {
@@ -11,7 +16,36 @@
   align-items: center;
 }
 
-
-.taskName{
+.taskName {
   text-transform: uppercase;
+}
+
+.taskNameCompleted {
+  position: relative;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity 0.4s linear;
+}
+
+.taskNameCompleted:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  animation: animationLine 0.5s ease-out 0s forwards;
+}
+
+@keyframes animationLine {
+  to {
+    width: calc(100% + 1rem);
+  }
+}
+
+.span {
+  margin-left: 20px;
+  color: red;
 }

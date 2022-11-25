@@ -3,9 +3,26 @@ import { Button } from "../UI/Button/Button";
 import styled from "./TaskListElement.module.css";
 
 export const TaskListElement = ({ task, dispatch }) => {
+  console.log("task", task);
   return (
     <div className={styled.wrapperElement}>
-      <li className={styled.taskName}>{task.name}</li>
+      <div className={styled.element}>
+        <input
+          type="checkbox"
+          onChange={() =>
+            dispatch({ type: "START_CHECKBOX_COMPLETE_TASK", id: task.id })
+          }
+        />
+        <li
+          className={
+            task.isCompleted ? styled.taskNameCompleted : styled.taskName
+          }
+        >
+          {task.name}
+        </li>
+        {task.isCompleted ? <span className={styled.span}>Completed</span> : ""}
+      </div>
+
       <div className={styled.btnGroup}>
         <Button onClick={() => dispatch({ type: "DELETE_TASK", id: task.id })}>
           Delete

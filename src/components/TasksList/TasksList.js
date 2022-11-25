@@ -8,30 +8,26 @@ export const TasksList = React.memo(({ taskList, dispatch }) => {
   return (
     <>
       <Card className={styled.tasks}>
-        {taskList.length === 0 ? (
-          ""
-        ) : (
-          <ul>
-            {taskList
-              .slice()
-              .reverse()
-              .map((task) => {
-                return task.isEdit ? (
-                  <EditTaskListElement
-                    key={`task-${task.id}`}
-                    task={task}
-                    dispatch={dispatch}
-                  />
-                ) : (
-                  <TaskListElement
-                    key={task.id}
-                    task={task}
-                    dispatch={dispatch}
-                  />
-                );
-              })}
-          </ul>
-        )}
+        <ul>
+          {taskList
+            ?.slice()
+            .reverse()
+            .map((task) => {
+              return task.isEdit ? (
+                <EditTaskListElement
+                  key={`task-${task.id}`}
+                  task={task}
+                  dispatch={dispatch}
+                />
+              ) : (
+                <TaskListElement
+                  key={task.id}
+                  task={task}
+                  dispatch={dispatch}
+                />
+              );
+            })}
+        </ul>
       </Card>
     </>
   );

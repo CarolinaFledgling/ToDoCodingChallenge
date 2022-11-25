@@ -3,7 +3,9 @@ import React, { useReducer } from "react";
 import { AddTask } from "./components/AddTask/AddTask";
 import { reducerFn } from "./utility/reducer";
 
-const initialState = { taskList: [] };
+const initialState = {
+  taskList: [],
+};
 
 function App() {
   const [{ taskList }, dispatch] = useReducer(reducerFn, initialState);

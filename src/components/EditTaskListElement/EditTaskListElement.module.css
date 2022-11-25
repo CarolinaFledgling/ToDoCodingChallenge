@@ -1,0 +1,20 @@
+.inputGroup {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputGroup label {
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

@@ -20,8 +20,8 @@ export const EditTaskListElement = React.memo(({ task, dispatch }) => {
   };
 
   return (
-    <form className={styled.inputGroup}>
-      <div>
+    <form className={styled.form}>
+      <div className={styled.inputGroup}>
         <label htmlFor="taskName">Task Name:</label>
         <input
           id="taskName"

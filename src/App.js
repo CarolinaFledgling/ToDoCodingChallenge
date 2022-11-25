@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useReducer } from "react";
 import { AddTask } from "./components/AddTask/AddTask";
+import { Header } from "./components/Header/Header";
 import { reducerFn } from "./utility/reducer";
 
 const initialState = {
@@ -11,14 +12,14 @@ function App() {
   const [{ taskList }, dispatch] = useReducer(reducerFn, initialState);
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>What needs to be done?</h2>
-      </header>
-      <section>
+      <Header/>
+      <main>
         <AddTask dispatch={dispatch} taskList={taskList} />
-      </section>
+      </main>
     </div>
   );
 }
 
 export default App;
+
+

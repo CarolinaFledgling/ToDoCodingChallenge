@@ -1,15 +1,18 @@
 .wrapperElement {
   display: flex;
-justify-content: center;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.element{
+.element {
   display: flex;
   width: 50%;
 }
 
+.input{
+  margin-right: 10px;
+}
 .btnGroup {
   display: flex;
   justify-content: space-around;

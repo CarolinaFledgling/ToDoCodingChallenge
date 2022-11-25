@@ -1,11 +1,18 @@
-.inputGroup {
+.form {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
+.inputGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
 .inputGroup label {
+  width: 20%;
   text-transform: uppercase;
   margin-right: 10px;
 }

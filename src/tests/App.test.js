@@ -32,9 +32,37 @@ test("adds a new task to the taskList", () => {
   };
 
   const result = reducerFn(initialState, action);
-  console.log("result", result);
 
   expect(result.taskList).toHaveLength(1);
   expect(result.taskList[0].name).toEqual("test task");
   expect(result.taskList[0].id).toBeDefined();
+});
+
+test("delete task from the Task list", () => {
+  const initialState = {
+    taskList: [
+      {
+        id: uuidv4(),
+        name: "Learn React",
+        isCompleted: false,
+      },
+      {
+        id: uuidv4(),
+        name: "Learn Js",
+        isCompleted: false,
+      },
+    ],
+  };
+
+  const action = {
+    type: "DELETE_TASK",
+    id: initialState.taskList[0].id,
+  };
+
+  const result = reducerFn(initialState, action);
+  console.log("result", result);
+
+  // function output
+  expect(result.taskList).toHaveLength(1);
+  expect(result.taskList[0].name).toEqual("Learn Js")
 });

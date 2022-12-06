@@ -19,50 +19,126 @@ test("Form submission should not call add method if input field is empty", () =>
   fireEvent.click(btn);
 });
 
-test("adds a new task to the taskList", () => {
-  const initialState = {
-    taskList: [],
-  };
+// Tests for checking reducerFn functionality
 
-  // dispatch an action to add a new task
+describe("reducerFn", () => {
+  test("adds a new task to the taskList", () => {
+    const initialState = {
+      taskList: [],
+    };
 
-  const action = {
-    type: "NEW_TASK",
-    name: "test task",
-  };
+    // dispatch an action to add a new task
 
-  const result = reducerFn(initialState, action);
+    const action = {
+      type: "NEW_TASK",
+      name: "test task",
+    };
 
-  expect(result.taskList).toHaveLength(1);
-  expect(result.taskList[0].name).toEqual("test task");
-  expect(result.taskList[0].id).toBeDefined();
-});
+    const result = reducerFn(initialState, action);
 
-test("delete task from the Task list", () => {
-  const initialState = {
-    taskList: [
-      {
-        id: uuidv4(),
-        name: "Learn React",
-        isCompleted: false,
-      },
-      {
-        id: uuidv4(),
-        name: "Learn Js",
-        isCompleted: false,
-      },
-    ],
-  };
+    expect(result.taskList).toHaveLength(1);
+    expect(result.taskList[0].name).toEqual("test task");
+    expect(result.taskList[0].id).toBeDefined();
+  });
 
-  const action = {
-    type: "DELETE_TASK",
-    id: initialState.taskList[0].id,
-  };
+  test("delete task from the Task list", () => {
+    const initialState = {
+      taskList: [
+        {
+          id: uuidv4(),
+          name: "Learn React",
+          isCompleted: false,
+        },
+        {
+          id: uuidv4(),
+          name: "Learn Js",
+          isCompleted: false,
+        },
+      ],
+    };
 
-  const result = reducerFn(initialState, action);
-  console.log("result", result);
+    const action = {
+      type: "DELETE_TASK",
+      id: initialState.taskList[0].id,
+    };
 
-  // function output
-  expect(result.taskList).toHaveLength(1);
-  expect(result.taskList[0].name).toEqual("Learn Js")
+    const result = reducerFn(initialState, action);
+    console.log("result", result);
+
+    // function output
+    expect(result.taskList).toHaveLength(1);
+    expect(result.taskList[0].name).toEqual("Learn Js");
+  });
+
+  test("check if the task is editing", () => {
+    const initialState = {
+      taskList: [
+        {
+          id: uuidv4(),
+          name: "Learn React",
+          isCompleted: false,
+        },
+        {
+          id: uuidv4(),
+          name: "Learn Js",
+          isCompleted: true,
+        },
+      ],
+    };
+
+    const action = {
+      type: "START_CHECKBOX_COMPLETE_TASK",
+      id: initialState.taskList[1].id,
+    };
+
+    const result = reducerFn(initialState, action);
+
+    expect(result.taskList).toHaveLength(2);
+    expect(result.taskList[1].isCompleted).toEqual(false);
+  });
+
+  test("should handle the SAVE_EDIT_TASK action", () => {
+    // Initialize the state
+    const initialState = {
+      taskList: [
+        {
+          id: "1",
+          name: "Task 1",
+          isCompleted: false,
+        },
+        {
+          id: "2",
+          name: "Task 2",
+          isCompleted: false,
+        },
+      ],
+    };
+    // Create the SAVE_EDIT_TASK action
+    const action = {
+      type: "SAVE_EDIT_TASK",
+      id: "2",
+      name: "new name of task",
+    };
+
+    const expectedState = {
+      taskList: [
+        {
+          id: "1",
+          name: "Task 1",
+          isCompleted: false,
+        },
+        {
+          id: "2",
+          name: "new name of task",
+          isCompleted: false,
+          isEdit: false,
+        },
+      ],
+    };
+
+   // Dispatch the action and get the new state
+   const newState = reducerFn(initialState, action);
+
+    expect(newState).toEqual(expectedState);
+  });
 });
